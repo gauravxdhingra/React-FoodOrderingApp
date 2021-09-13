@@ -1,24 +1,28 @@
-import logo from './logo.svg';
+import Header from './components/Layout/Header';
+import Meals from './components/Meals/Meals';
 import './App.css';
+import Cart from './components/Cart/Cart';
+import { useState } from 'react';
 
 function App() {
+  const [cartVisibility, setCartVisibility] = useState(false);
+
+  const showCartHandler = () => {
+    setCartVisibility(true);
+  }
+
+  const hideCardHandler = () => {
+    setCartVisibility(false);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {cartVisibility && <Cart onHideCart={hideCardHandler} />}
+      <Header onShowCart={showCartHandler} />
+      <main>
+        <Meals />
+      </main>
+    </>
   );
 }
 
