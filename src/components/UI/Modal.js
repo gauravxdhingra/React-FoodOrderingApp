@@ -20,6 +20,7 @@ const Modal = props => {
     return <>
         {ReactDom.createPortal(<Backdrop onHideCart={props.onHideCart} />, portalElement)}
         {ReactDom.createPortal(<Overlay>{props.children}</Overlay>, portalElement)}
+        
     </>
 }
 
